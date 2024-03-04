@@ -83,3 +83,4 @@ nbdist/
 *.log
 *.xml.versionsBackup
 *.swp
+cmake-build-debug*/
