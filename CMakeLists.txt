@@ -4,6 +4,9 @@ project(CPrimerPlus6E_code)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
+# 引入子目录及其CMakeLists.txt
+add_subdirectory(SolutionCode)
+
 add_executable(practice_1_7 Ch01/practice/practice_1_7.c)
 
 add_executable(escape Ch03/escape.c)
@@ -27,6 +30,7 @@ add_executable(varwid Ch04/varwid.c)
 add_executable(width Ch04/width.c)
 
 add_executable(practice_4_7_3 Ch04/practice/practice_4_7_3.c)
+add_executable(practice_4_7_4 Ch04/practice/practice_4_7_4.c)
 
 add_executable(guess Ch08/guess.c)
 add_executable(showchar1 Ch08/showchar1.c)
@@ -36,6 +40,3 @@ add_executable(test Ch10/test.c)
 
 add_executable(book Ch14/book.c)
 add_executable(manybook Ch14/manybook.c)
-
-
-
