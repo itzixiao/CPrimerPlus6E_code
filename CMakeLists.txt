@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 
-add_executable(practice_1_7 src/Ch01/practice/practice_1_7.c)
+add_executable(review_1_7 src/Ch01/review/review_1_7.c)
 
 add_executable(escape src/Ch03/escape.c)
 
@@ -27,8 +27,9 @@ add_executable(talkback src/Ch04/talkback.c)
 add_executable(varwid src/Ch04/varwid.c)
 add_executable(width src/Ch04/width.c)
 
-add_executable(practice_4_7_3 src/Ch04/practice/practice_4_7_3.c)
-add_executable(practice_4_7_4 src/Ch04/practice/practice_4_7_4.c)
+add_executable(review_4_7_3 src/Ch04/review/review_4_7_3.c)
+add_executable(review_4_7_4 src/Ch04/review/review_4_7_4.c)
+add_executable(review_4_7_5 src/Ch04/review/review_4_7_5.c)
 
 add_executable(guess src/Ch08/guess.c)
 add_executable(showchar1 src/Ch08/showchar1.c)
