@@ -31,6 +31,15 @@ add_executable(review_4_7_3 src/Ch04/review/review_4_7_3.c)
 add_executable(review_4_7_4 src/Ch04/review/review_4_7_4.c)
 add_executable(review_4_7_5 src/Ch04/review/review_4_7_5.c)
 
+add_executable(practice_4_8_1 src/Ch04/practice/practice_4_8_1.c)
+add_executable(practice_4_8_2 src/Ch04/practice/practice_4_8_2.c)
+add_executable(practice_4_8_3 src/Ch04/practice/practice_4_8_3.c)
+add_executable(practice_4_8_4 src/Ch04/practice/practice_4_8_4.c)
+add_executable(practice_4_8_5 src/Ch04/practice/practice_4_8_5.c)
+add_executable(practice_4_8_6 src/Ch04/practice/practice_4_8_6.c)
+add_executable(practice_4_8_7 src/Ch04/practice/practice_4_8_7.c)
+add_executable(practice_4_8_8 src/Ch04/practice/practice_4_8_8.c)
+
 add_executable(guess src/Ch08/guess.c)
 add_executable(showchar1 src/Ch08/showchar1.c)
 add_executable(echo src/Ch08/echo.c)
@@ -38,3 +47,5 @@ add_executable(echo src/Ch08/echo.c)
 add_executable(test src/Ch10/test.c)
 add_executable(book src/Ch14/book.c)
 add_executable(manybook src/Ch14/manybook.c)
+
+
