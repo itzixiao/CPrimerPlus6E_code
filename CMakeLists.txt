@@ -1,80 +1,38 @@
-cmake_minimum_required(VERSION 2.8.12.2)
+cmake_minimum_required(VERSION 3.27.8)
+#cmake_minimum_required(VERSION 2.8.12.2)
 project(CPrimerPlus6E_code)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
-#Ch01
-add_executable(inform src/Ch01/inform.c)
-add_executable(listing1 src/Ch01/listing1.c)
-add_executable(listing2 src/Ch01/listing2.c)
-add_executable(review_1_7 src/Ch01/review/review_1_7.c)
-#Ch02
-add_executable(fathm_ft src/Ch02/fathm_ft.c)
-add_executable(first src/Ch02/first.c)
-add_executable(nogood src/Ch02/nogood.c)
-add_executable(stillbad src/Ch02/stillbad.c)
-add_executable(two_func src/Ch02/two_func.c)
-#Ch03
-add_executable(altnames src/Ch03/altnames.c)
-add_executable(badcount src/Ch03/badcount.c)
-add_executable(bases src/Ch03/bases.c)
-add_executable(charcode src/Ch03/charcode.c)
-add_executable(escape src/Ch03/escape.c)
-add_executable(floaterr src/Ch03/floaterr.c)
-add_executable(platinum src/Ch03/platinum.c)
-add_executable(print1 src/Ch03/print1.c)
-add_executable(print2 src/Ch03/print2.c)
-add_executable(showf_pt src/Ch03/showf_pt.c)
-add_executable(toobig src/Ch03/toobig.c)
-add_executable(typesize src/Ch03/typesize.c)
-#Ch04
-add_executable(defines src/Ch04/defines.c)
-add_executable(flags src/Ch04/flags.c)
-add_executable(floatcnv src/Ch04/floatcnv.c)
-add_executable(floats src/Ch04/floats.c)
-add_executable(input src/Ch04/input.c)
-add_executable(intconv src/Ch04/intconv.c)
-add_executable(longstrg src/Ch04/longstrg.c)
-add_executable(pizza src/Ch04/pizza.c)
-add_executable(praise1 src/Ch04/praise1.c)
-add_executable(praise2 src/Ch04/praise2.c)
-add_executable(printout src/Ch04/printout.c)
-add_executable(prntval src/Ch04/prntval.c)
-add_executable(skiptwo src/Ch04/skiptwo.c)
-add_executable(stringf src/Ch04/stringf.c)
-add_executable(talkback src/Ch04/talkback.c)
-add_executable(varwid src/Ch04/varwid.c)
-add_executable(width src/Ch04/width.c)
-add_executable(review_4_7_3 src/Ch04/review/review_4_7_3.c)
-add_executable(review_4_7_4 src/Ch04/review/review_4_7_4.c)
-add_executable(review_4_7_5 src/Ch04/review/review_4_7_5.c)
-add_executable(practice_4_8_1 src/Ch04/practice/practice_4_8_1.c)
-add_executable(practice_4_8_2 src/Ch04/practice/practice_4_8_2.c)
-add_executable(practice_4_8_3 src/Ch04/practice/practice_4_8_3.c)
-add_executable(practice_4_8_4 src/Ch04/practice/practice_4_8_4.c)
-add_executable(practice_4_8_5 src/Ch04/practice/practice_4_8_5.c)
-add_executable(practice_4_8_6 src/Ch04/practice/practice_4_8_6.c)
-add_executable(practice_4_8_7 src/Ch04/practice/practice_4_8_7.c)
-add_executable(practice_4_8_8 src/Ch04/practice/practice_4_8_8.c)
-#Ch05
-add_executable(add_one src/Ch05/add_one.c)
-add_executable(addemup src/Ch05/addemup.c)
-add_executable(bottles src/Ch05/bottles.c)
-add_executable(convert src/Ch05/convert.c)
-add_executable(divide src/Ch05/divide.c)
-add_executable(golf src/Ch05/golf.c)
-add_executable(min_sec src/Ch05/min_sec.c)
-add_executable(post_pre src/Ch05/post_pre.c)
-add_executable(pound src/Ch05/pound.c)
-add_executable(rules src/Ch05/rules.c)
-add_executable(running src/Ch05/running.c)
-add_executable(shoes1 src/Ch05/shoes1.c)
-add_executable(shoes2 src/Ch05/shoes2.c)
-add_executable(sizeof src/Ch05/sizeof.c)
-add_executable(squares src/Ch05/squares.c)
-add_executable(wheat src/Ch05/wheat.c)
-add_executable(review_5_10_4 src/Ch05/review/review_5_10_4.c)
-add_executable(review_5_10_6 src/Ch05/review/review_5_10_6.c)
-add_executable(review_5_10_8 src/Ch05/review/review_5_10_8.c)
-add_executable(review_5_10_9 src/Ch05/review/review_5_10_9.c)
+########## 多c编译处理方法：自动编译所有c，并可指定不需要编译的路径 ######################
+set(exclude_dir "cmake-build-debug")      # 编译时排除的文件夹名
+#list(APPEND exclude_dir "path_string")   # 当c路径中含有"path_string"时，将不会被编译
+list(APPEND exclude_dir "bin")
+list(APPEND exclude_dir "doc")
+#list(APPEND exclude_dir "solution")
+list(APPEND exclude_dir "XB")
+
+file(GLOB_RECURSE files *.c **/*.c)            # 递归获取当前项目所有(子)目录下的c，绝对路径
+#file(GLOB files *.c dir_name/*.c)    # 非递归，手动指定哪些c需要被编译。使用该句请先注释上一句
+foreach (file ${files})
+    # 检查当前文件所在的路径是否被添加在了排除列表${exclude_dir}
+    set(need_to_make ON)
+    foreach (exclude_str ${exclude_dir})
+        if (${file} MATCHES ${exclude_str})  # 该路径中含有排除的文件夹名,故该路径被排除掉
+            set(need_to_make OFF)
+        endif ()
+    endforeach ()
+
+    # 当前文件${file}需要被编译
+    if (${need_to_make} STREQUAL ON)
+        file(RELATIVE_PATH relative_path ${PROJECT_SOURCE_DIR} ${file})  # 获取${file}的相对路径${relative_path}
+        set(exe ${relative_path})
+        string(REGEX REPLACE "\\/" "." exe ${exe})    # 将路径中的/替换为.
+        string(REGEX REPLACE "\ " "_" exe ${exe})     # 空格替换为_
+        string(REGEX REPLACE "\\.c" "" exe ${exe})  # 后缀.c删掉
+        add_executable(${exe} ${relative_path})       # 将当前c添加到编译列表
+        message(STATUS "${relative_path} ========> ${exe}")  # 打印文件名信息
+    endif ()
+endforeach ()
+###########################################################################################
