@@ -84,3 +84,4 @@ nbdist/
 *.xml.versionsBackup
 *.swp
 cmake-build-debug*/
+bin/

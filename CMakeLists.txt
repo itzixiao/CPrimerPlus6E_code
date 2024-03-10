@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.27.8)
+cmake_minimum_required(VERSION 3.22.1)
+#cmake_minimum_required(VERSION 3.27.8)
 #cmake_minimum_required(VERSION 2.8.12.2)
 project(CPrimerPlus6E_code)
 

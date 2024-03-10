@@ -1,7 +1,7 @@
 # CPrimerPlus6E_code
 C Primer Plus 原书配套代码
 
-# Solution Git Large File 
+# 1.Solution Git Large File 
 remote: error: Trace: e5b21b4ed1dd361b19ffbc677b66a3ff38dbccbcc0c53973958a35490cacdd5c
 remote: error: See https://gh.io/lfs for more information.
 remote: error: File doc/C Primer Plus中文版附录.pdf is 161.21 MB; this exceeds GitHub's file size limit of 100.00 MB
@@ -29,3 +29,14 @@ git add .
 git commit -m "feat(): Configure LFS tracking for large files"
 git push origin main
 ```
+
+# 2.Solution for WSL config Valgrind
+## 2.1 Install WSL and Related Programs in WSL
+```shell
+sudo apt-get install cmake # Install cmake  
+sudo apt-get install build-essential # Install build-essential  
+sudo apt-get install clang # Install clang  
+sudo apt-get install valgrind # Install valgrind
+```
+## 2.2 Configure WSL as the Default Toolchain in CLion
+## 2.3 Set the Path for Valgrind (Code Format Remains Unchanged)
