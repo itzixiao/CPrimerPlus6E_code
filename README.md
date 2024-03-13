@@ -1,5 +1,15 @@
 # CPrimerPlus6E_code
-C Primer Plus 原书配套代码
+C Primer Plus（第六版中文版） 原书配套代码(包含编程练习答案)
+
+### Directory
+```
+    CprimerPlus6E_code
+    |---bin
+    |---doc
+    |---solution
+    |---src
+    |---XB
+```
 
 # 1.Solution Git Large File 
 remote: error: Trace: e5b21b4ed1dd361b19ffbc677b66a3ff38dbccbcc0c53973958a35490cacdd5c

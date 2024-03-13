@@ -5,6 +5,8 @@ project(CPrimerPlus6E_code)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
 ########## 多c编译处理方法：自动编译所有c，并可指定不需要编译的路径 ######################
 set(exclude_dir "cmake-build-debug")      # 编译时排除的文件夹名
