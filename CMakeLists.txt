@@ -8,12 +8,16 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
+########## 编译多源代码文件的程序 ######################
+add_executable(usehotel src/Ch09/usehotel.c src/Ch09/hotel.c)
+###########################################################################################
+
 ########## 多c编译处理方法：自动编译所有c，并可指定不需要编译的路径 ######################
 set(exclude_dir "cmake-build-debug")      # 编译时排除的文件夹名
 #list(APPEND exclude_dir "path_string")   # 当c路径中含有"path_string"时，将不会被编译
 list(APPEND exclude_dir "bin")
 list(APPEND exclude_dir "doc")
-#list(APPEND exclude_dir "solution")
+list(APPEND exclude_dir "solution")
 list(APPEND exclude_dir "XB")
 
 file(GLOB_RECURSE files *.c **/*.c)            # 递归获取当前项目所有(子)目录下的c，绝对路径
@@ -39,3 +43,4 @@ foreach (file ${files})
     endif ()
 endforeach ()
 ###########################################################################################
+
